@@ -1,41 +1,79 @@
-//====Variables=====//
-var arreglo = [1, 2, 3, 4, 5];
-var entero = 1;
-var cadena_texto = "Hola Mundo";
-var booleano = true;
+const seeAllPostsLink = document.querySelector("#bestOfTheWeek a");
+seeAllPostsLink.addEventListener("click", (e) => {
+  e.preventDefault();
 
-//===Constantes====//
-const PI = 3.1416;
+  const existingList = document.getElementById("postsList");
+
+  if (existingList) {
+    existingList.remove();
+  } else {
+    const container = document.getElementById("bestOfTheWeek");
+
+    const posts = [
+      "Rodrigo",
+      "Lopez",
+      "Escobedo"
+    ];
+
+    const ul = document.createElement("ul");
+    ul.id = "postsList";
+
+    posts.forEach((post) => {
+      const li = document.createElement("li");
+      li.textContent = post;
+      ul.appendChild(li);
+    });
+
+    container.appendChild(ul);
+  }
+});
 
 
-//====Funciones====//
-function suma(x, y){
-    var resultado = x + y;
-    console.log("El resultado de la suma es: " + resultado);
-    return resultado;
-}
+const seeAllPicsBtn = document.querySelector("#seeAll button");
+seeAllPicsBtn.addEventListener("click", () => {
+  const existingPics = document.getElementById("extraPics");
 
-function imprimirMensaje(mensaje){
-    console.log("Este es mi mensaje " + mensaje);
-}
+  if (existingPics) {
+    existingPics.remove();
+  } else {
+    const container = document.getElementById("seeAll");
 
-imprimirMensaje("Hola");
-imprimirMensaje("Vacaciones 1 semana :D");
-imprimirMensaje(true);
+    const pics = [
+      "soundtrap-n30_i7mx62o-unsplash.jpg",
+      "soundtrap-n30_i7mx62o-unsplash.jpg",
+      "soundtrap-n30_i7mx62o-unsplash.jpg"
+    ];
 
-suma(1, 2);
-suma(10, 20);
-suma(100, 200);
+    const div = document.createElement("div");
+    div.id = "extraPics";
+
+    pics.forEach((src) => {
+      const img = document.createElement("img");
+      img.src = src;
+      div.appendChild(img);
+    });
+
+    container.appendChild(div);
+  }
+});
 
 
-//===Elementos de la pagina como variables===///
-var botonBuscar = document.getElementById("buscar");
+const likeBtn = document.getElementById("likeBtn");
+const likeCount = document.getElementById("likeCount");
+let likes = 0;
 
-console.log(botonBuscar);
+likeBtn.addEventListener("click", () => {
+  likes++;
+  likeCount.textContent = likes;
+});
 
-//==== Eventos===== //
-botonBuscar.addEventListener("click", function(){
-    //alert("Hiciste clic al boton");
-    botonBuscar.classList.add("rojo");
+const darkModeBtn = document.getElementById("darkModeToggle");
+darkModeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  if(document.body.classList.contains("dark")) {
+    darkModeBtn.textContent = "☀️";
+  } else {
+    darkModeBtn.textContent = "🌙";
+  }
 });
 

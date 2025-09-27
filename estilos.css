@@ -187,3 +187,10 @@ section img, aside img {
 .ocultar {
      display: none;
 }
+
+.dark {
+  background-color: black;
+  color: white;
+}
+
+

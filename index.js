@@ -58,7 +58,22 @@ seeAllPicsBtn.addEventListener("click", () => {
 });
 
 
-const adsBtn = document.querySelector("#ads button");
-adsBtn.addEventListener("click", () => {
-  alert("Cargando...");
+const likeBtn = document.getElementById("likeBtn");
+const likeCount = document.getElementById("likeCount");
+let likes = 0;
+
+likeBtn.addEventListener("click", () => {
+  likes++;
+  likeCount.textContent = likes;
 });
+
+const darkModeBtn = document.getElementById("darkModeToggle");
+darkModeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  if(document.body.classList.contains("dark")) {
+    darkModeBtn.textContent = "☀️";
+  } else {
+    darkModeBtn.textContent = "🌙";
+  }
+});
+
